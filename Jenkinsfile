@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'windows' } 
+    agent any // Uses your active Built-In Windows 11 Node
 
     stages {
         stage('Checkout') {
