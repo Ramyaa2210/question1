@@ -1,10 +1,9 @@
 pipeline {
-    agent { label 'windows' } // Ensures this runs on your Windows agent
+    agent { label 'windows' } 
 
     stages {
         stage('Checkout') {
             steps {
-                // Pulls the latest code from your GitHub repository
                 checkout scm
             }
         }
@@ -13,7 +12,8 @@ pipeline {
             steps {
                 bat '''
                 python -m venv venv
-                call venv\\Scripts\\activate & pip install -r requirements.txt
+                call venv\\Scripts\\activate
+                pip install -r requirements.txt
                 '''
             }
         }
@@ -21,7 +21,8 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 bat '''
-                call venv\\Scripts\\activate & pytest test_app.py
+                call venv\\Scripts\\activate
+                pytest test_app.py
                 '''
             }
         }
@@ -36,3 +37,4 @@ pipeline {
         }
     }
 }
+
